@@ -7,10 +7,18 @@ class App extends Component {
         age: 36
     }
 
+    handleClick = () => {
+        const name = this.state.name === 'Lulu' ? 'Antho' : 'Lulu'
+        this.setState({name})
+    }
+
     render() {
         const {name, age} = this.state
         return (
-            <h1>Hello {name} - {age}</h1>
+            <>
+                <h1>Hello {name} - {age}</h1>
+                <button onClick={this.handleClick}>Click</button>
+            </>
         )
     }
 }
