@@ -4,7 +4,7 @@ import React, {Component} from "react";
 class App extends Component {
     state = {
         name: 'Lulu',
-        age: 36
+        exp: 36
     }
 
     componentDidMount = () => {
@@ -28,10 +28,13 @@ class App extends Component {
     }
 
     render() {
-        const {name, age} = this.state
+        const {name, exp} = this.state
+        const {age} = this.props
         return (
             <>
-                <h1>Hello {name} - {age}</h1>
+                <h1>Hello {name} - {exp}</h1>
+                <h2>{this.props.age}</h2>
+                <h3>{age}</h3>
                 <button onClick={this.handleClick}>Click</button>
             </>
         )
