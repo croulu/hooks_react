@@ -7,6 +7,21 @@ class App extends Component {
         age: 36
     }
 
+    componentDidMount = () => {
+        console.log('mounted')
+        this.setState({name: 'Antho'})
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.name === 'Lulu') {
+            console.log('update')
+        }
+    }
+
+    componentWillUnmount() {
+        console.log('willunmont')
+    }
+
     handleClick = () => {
         const name = this.state.name === 'Lulu' ? 'Antho' : 'Lulu'
         this.setState({name})
