@@ -1,6 +1,14 @@
 import './App.css';
 import React, {Component} from "react";
 
+const DisplayName = ({name}) => {
+    return (
+        <>
+            <h3>display Name : {name}</h3>
+        </>
+    )
+}
+
 class App extends Component {
     state = {
         name: 'Lulu',
@@ -9,7 +17,7 @@ class App extends Component {
 
     componentDidMount = () => {
         console.log('mounted')
-        this.setState({name: 'Antho'})
+        this.setState({name: 'Bob'})
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -35,6 +43,7 @@ class App extends Component {
                 <h1>Hello {name} - {exp}</h1>
                 <h2>{this.props.age}</h2>
                 <h3>{age}</h3>
+                <DisplayName name={name}/>
                 <button onClick={this.handleClick}>Click</button>
             </>
         )
