@@ -1,6 +1,6 @@
 import './App.css';
 import React, {Component} from "react";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 const DisplayName = ({name}) => {
     return (
@@ -17,18 +17,18 @@ class App extends Component {
     }
 
     componentDidMount = () => {
-        console.log('mounted')
+        console.log('class componentDidMount -- mounted')
         this.setState({name: 'Bob'})
     }
 
     componentDidUpdate(prevProps, prevState) {
         if (prevState.name === 'Lulu') {
-            console.log('update')
+            console.log('class componentDidUpdate -- update')
         }
     }
 
     componentWillUnmount() {
-        console.log('willunmont')
+        console.log('class componentWillUnmount -- willunmont')
     }
 
     handleClick = () => {
@@ -67,8 +67,19 @@ const AppHooks = ({num}) => {
         roues: 2,
         siege: 1
     })
-    
+
     const plusDeux = () => setResult(result + 2)
+
+    useEffect(() => {
+        console.log('component didMount')
+        setResult(7)
+
+        return (() => console.log('component willunmont'))
+    }, [])
+
+    useEffect(() => {
+        console.log('component didUpdate')
+    }, [result])
 
     return (<>
         <h1>le résultat est :: {result}</h1>
