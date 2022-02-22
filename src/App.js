@@ -38,6 +38,13 @@ class App extends Component {
     render() {
         const {name, exp} = this.state
         const {age} = this.props
+
+        const {pilou, plop} = {pilou : 'pilouTest', plop : 'plopValue'}
+        const [tab1, tab2, ...tabReste] = [1, 2, 3, 4, 5]
+
+        console.log(pilou, plop)
+        console.log(tab1, tab2, tabReste)
+
         return (
             <>
                 <h1>Hello {name} - {exp}</h1>
