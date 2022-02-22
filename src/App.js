@@ -63,6 +63,11 @@ export default App;
 
 const AppHooks = ({num}) => {
     const [result, setResult] = useState(num)
+    const [state, setState] = useState({
+        roues: 2,
+        siege: 1
+    })
+    
     const plusDeux = () => setResult(result + 2)
 
     return (<>
