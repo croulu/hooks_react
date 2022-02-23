@@ -54,6 +54,7 @@ class App extends Component {
                 <DisplayName name={name}/>
                 <button onClick={this.handleClick}>Click</button>
                 <AppHooks num={2}/>
+                <AppPokemon/>
             </>
         )
     }
@@ -85,4 +86,34 @@ const AppHooks = ({num}) => {
         <h1>le résultat est :: {result}</h1>
         <button onClick={plusDeux}>+2</button>
     </>)
+}
+
+
+const Item = ({name}) => (
+    <li key={name} style={{fontWeight: 700}}>
+        {name}
+    </li>
+)
+
+const AppPokemon = () => {
+    const [pokemons, setPokemons] = useState([])
+
+    useEffect(() => {
+        fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
+            .then(res => res.json())
+            .then(data => setPokemons(data.results))
+    }, [])
+
+    return (
+        <>
+            <h1>Les 151 premiers Pokemon</h1>
+            <ol>
+                {
+                    pokemons.map(({name}) => (
+                        <Item key={name} name={name}/>
+                    ))
+                }
+            </ol>
+        </>
+    )
 }
